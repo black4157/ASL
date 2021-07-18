@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.du.asl.AslMapper2">
+	
+	<select id="listYear2" resultType="AslVO2">
+		SELECT distinct EFC_YY
+		FROM data2;
+	</select>
+
+	<!-- 생활스포츠지도사 -->
+	<select id="LSL_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="1급 생활스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="LSL_FT2" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="2급 생활스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="LSL_ftstare1" resultMap="result">
+		SELECT B.QF_ITM_NM as LSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as LSL_test2, B.cnt as LSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="1급 생활스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="1급 생활스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY LSL_test3 desc;
+	</select>
+	
+	<select id="LSL_ftstare2" resultMap="result">
+		SELECT B.QF_ITM_NM as LSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as LSL_test2, B.cnt as LSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 생활스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 생활스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY LSL_test3 desc;
+	</select>
+	<!--   생활스포츠지도사  끝  -->
+	
+	
+	<!-- 장애인스포츠지도사 -->
+	<select id="DSL_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="1급 장애인스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="DSL_FT2" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="2급 장애인스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="DSL_ftstare1" resultMap="result">
+		SELECT B.QF_ITM_NM as DSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as DSL_test2, B.cnt as DSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY=2019 and QF_GRADE_NM="1급 장애인스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY=2019 and QF_GRADE_NM="1급 장애인스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY DSL_test3 desc;
+	</select>
+	
+	<select id="DSL_ftstare2" resultMap="result">
+		SELECT B.QF_ITM_NM as DSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as DSL_test2, B.cnt as DSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 장애인스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 장애인스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY DSL_test3 desc;
+	</select>
+	<!--  장애인스포츠지도사  끝 -->
+	
+	
+	<!-- 전문스포츠지도사 -->
+	<select id="PSL_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="1급 전문스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="PSL_FT2" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2 
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="2급 전문스포츠지도사" 
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="PSL_ftstare1" resultMap="result">
+		SELECT B.QF_ITM_NM as PSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as PSL_test2, B.cnt as PSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="1급 전문스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="1급 전문스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY PSL_test3 desc;
+	</select>
+	
+	<select id="PSL_ftstare2" resultMap="result">
+		SELECT B.QF_ITM_NM as PSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as PSL_test2, B.cnt as PSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 전문스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="2급 전문스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY PSL_test3 desc;
+	</select>
+	<!--  전문스포츠지도사  끝 -->
+	
+	
+	<!-- 노인스포츠지도사 -->
+	<select id="SSL_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="노인스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	
+	<select id="SSL_stare" resultMap="result">
+		SELECT B.QF_ITM_NM as SSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as SSL_test2, B.cnt as SSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="노인스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="노인스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY SSL_test3 desc;
+	</select>
+	<!--  노인스포츠지도사  끝 -->
+	
+	
+	<!-- 유소년스포츠지도사 -->
+	<select id="YSL_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="유소년스포츠지도사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	<select id="YSL_stare" resultMap="result">
+		SELECT B.QF_ITM_NM as YSL_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as YSL_test2, B.cnt as YSL_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="유소년스포츠지도사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="유소년스포츠지도사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY YSL_test3 desc;
+	</select>
+	<!--  유소년스포츠지도사  끝 -->
+	
+	
+	<!-- 건강운동관리사 -->
+	<select id="HEM_FT1" resultMap="result">
+		SELECT EFC_YY, round(avg(PRTC_TOT_GRDE),1) as avg_total, round(avg(ORST_TOT_GRDE),1) as avg_dic
+		FROM data2
+		WHERE PRTC_PAS_DIV_NM="합격" and QF_GRADE_NM="건강운동관리사"
+		GROUP BY EFC_YY;
+	</select>
+	
+	
+	<select id="HEM_stare" resultMap="result">
+		SELECT B.QF_ITM_NM as HEM_test1, ifnull(truncate((A.cnt/B.cnt)*100, 1),0) as HEM_test2, B.cnt as HEM_test3
+		FROM (SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="건강운동관리사" and PRTC_PAS_DIV_NM="합격" 
+				GROUP BY QF_ITM_NM) A
+		right outer join
+			(SELECT QF_ITM_NM, count(*) as cnt 
+				FROM data2 
+				WHERE EFC_YY="${year}" and QF_GRADE_NM="건강운동관리사" 
+				GROUP BY QF_ITM_NM) B
+		ON A.QF_ITM_NM=B.QF_ITM_NM
+		GROUP BY B.QF_ITM_NM
+		ORDER BY HEM_test3 desc;
+	</select>
+	<!--  건강운동관리사  끝 -->
+	
+	
+	<resultMap type="AslVO2" id="result">
+		<result property="QF_ITM_NM" column="LSL_test1" />
+		<result property="pass" column="LSL_test2" />
+		<result property="count" column="LSL_test3" />
+		
+		<result property="QF_ITM_NM" column="DSL_test1" />
+		<result property="pass" column="DSL_test2" />
+		<result property="count" column="DSL_test3" />
+		
+		<result property="QF_ITM_NM" column="PSL_test1" />
+		<result property="pass" column="PSL_test2" />
+		<result property="count" column="PSL_test3" />
+		
+		<result property="QF_ITM_NM" column="HEM_test1" />
+		<result property="pass" column="HEM_test2" />
+		<result property="count" column="HEM_test3" />
+		
+		<result property="QF_ITM_NM" column="SSL_test1" />
+		<result property="pass" column="SSL_test2" />
+		<result property="count" column="SSL_test3" />
+		
+		<result property="QF_ITM_NM" column="YSL_test1" />
+		<result property="pass" column="YSL_test2" />
+		<result property="count" column="YSL_test3" />
+		
+		<result property="avg1" column="avg_total" /> <!-- 실기 총 평균합격점 -->
+		<result property="avg2" column="avg_dic" />	<!-- 실기 구술 평균합격점 -->
+	</resultMap>
+	
+	
+</mapper>

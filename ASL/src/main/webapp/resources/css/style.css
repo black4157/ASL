@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+html{
+	position: relative;
+}
+
+/*
+	menu
+*/
+ 
+a{color: #fff;text-decoration: none;}
+a.on{background-color: white; color:black !important; text-decoration: underline !important;}
+
+nav-sp{
+	color: white;
+	padding: 10px;
+}
+
+#section1, #section2, #section3{
+	margin: 20px auto;
+	padding: 40px;
+	width: 100%;
+}
+
+#section2{
+	background-color: #F0F8FF;
+}
+
+/*
+	종목과 정의
+*/
+#section1 h1{
+	margin: 50px 0;
+	text-align: center;
+}
+
+#section1 #define #h3, #section2 #h3, #section3 #h3{
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+/* 
+	필기 
+*/
+
+/*연도 출력*/
+#section2 .total_year, #section2 .graph_title{
+	text-align: center;
+}
+
+#section2 #btn{
+	margin: 20px;
+}
+
+
+/* 
+	그래프
+*/
+#section2 .wt_graph1, #section2 .wt_graph2{
+	padding: 20px;
+	display: inline-block;
+}
+
+#section2 .wt_graph1 #columnchart_values1, #section2 .wt_graph2 #columnchart_values2{
+	border: 1px solid black;
+}
+
+#section2 .wt_graph1 .wt_avg, #section2 .wt_graph2 .wt_avg{
+	text-align: center;
+	font-size: 16px;
+	margin: 10px;
+}
+
+/*
+	stare 
+*/
+
+#section2 .wt_stare{
+	margin: 30px 0;
+}
+
+#section2 .year1, #section2 .year2{
+	margin: 0 100px;
+	text-align: center;
+	height: 700px;
+	display: inline-block;
+	overflow: scroll;
+}
+
+#section2 .year1 h2, #section2 .year2 h2{
+	padding: 20px;
+}
+
+#section2 .year1 .tbl_count th, #section2 .year2 .tbl_count th{
+	padding: 0 10px;
+}
+
+#section2 .year1 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+#section2 .year2 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+
+/****
+	실기 
+****/
+
+/*연도 출력*/
+#section3 .total_year, #section3 .graph_title{
+	text-align: center;
+}
+
+#section3 #btn{
+	margin: 20px;
+}
+
+/*
+	그래프
+*/
+#section3 .ft_graph1, #section3 .ft_graph2{
+	padding: 20px;
+	display: inline-block;
+}
+
+#section3 .ft_graph1 #ComboChart_values1, #section3 .ft_graph2 #ComboChart_values2{
+	border: 1px solid black;
+}
+
+#section3 .ft_graph1 .ft_avg, #section3 .ft_graph2 .ft_avg{
+	text-align: center;
+	font-size: 16px;
+	margin: 10px;
+}
+
+/*
+	stare 
+*/
+#section3 .ft_stare{
+	margin: 30px 0;
+}
+
+#section3 .year1, #section3 .year2{
+	margin: 0 100px;
+	text-align: center;
+	height: 700px;
+	display: inline-block;
+	overflow: scroll;
+}
+
+#section3 .year1 h2, #section3 .year2 h2{
+	padding: 20px;
+}
+
+#section3 .year1 .tbl_count th, #section3 .year2 .tbl_count th{
+	padding: 0 10px;
+}
+
+#section3 .year1 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+#section3 .year2 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+#section3 #barchart_material{
+	margin: 0 auto;
+	padding: 10px;
+}
+
+/*
+	HEM전용			
+*/
+
+#section2 .wt_graph, #section2 .wt_stare,
+#section3 .ft_graph, #section3 .ft_stare{
+	text-align: center;
+} 
+
+#section2 .wt_stare .HEMyear1,
+#section3 .ft_stare .HEMyear2{
+	height:300px;
+	scroll: none;
+	margin: 0 100px;
+	text-align: center;
+}
+
+#section2 .HEMyear1 h2, #section2 .HEMyear2 h2,
+#section3 .HEMyear2 h2, #section3 .HEMyear2 h2{
+	padding: 20px;
+}
+
+#section2 .HEMyear1 .tbl_count th, #section2 .HEMyear2 .tbl_count th,
+#section3 .HEMyear2 .tbl_count th, #section3 .HEMyear2 .tbl_count th{
+	padding: 0 10px;
+}
+
+#section2 .HEMyear1 .tbl_count,
+#section3 .HEMyear2 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+#section2 .HEMyear2 .tbl_count
+#section3 .HEMyear2 .tbl_count{
+	margin: 0 auto;
+	-webkit-border-horizontal-spacing: 20px;
+}
+
+
+
+
+/*
+	플로팅 메뉴
+*/
+a:link    {text-decoration:none; color:#333;}
+a:hover {text-decoration:none; color:#999;}
+a:active    {text-decoration:none; color:#FF0033;}
+a:visited   {text-decoration:none; color:#333;}
+
+#floatMenu{
+    position: absolute;
+    width: 90px;
+    right: 10px;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    text-align: center;
+    top: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#page_up, #home, #page_down {
+	height: 31px;
+	margin: 0 auto;
+}
+
+
+/*
+	footer
+*/
+.footer{
+	margin-top: 50px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	background: #343a40;
+	padding: 30px;
+	position: relative;
+}
+
+
+#btn{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+#btn:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+#btn:before, #btn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+#btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#btn:hover:before, #btn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+/* 
+.total_year {
+  transform: translate(-50%, -50%);
+} */
+
+.total_year select {
+  background-color: #0563af;
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.total_year::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.total_year:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.total_year select option {
+  padding: 30px;
+}
+
+
